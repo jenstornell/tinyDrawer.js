@@ -13,7 +13,7 @@ var TinyDrawerMenu = (function () {
 
   fn.setup = function() {
     fn.elementDrawer = document.querySelector(fn.options.selectorDrawer);
-    fn.elementBackdrop = fn.elementDrawer.querySelector('[data-drawer-backdrop]');
+    fn.elementBackdrop = document.querySelector('[data-drawer-backdrop]');
   };
 
   fn.triggerOpen = function() {
