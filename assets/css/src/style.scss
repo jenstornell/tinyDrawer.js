@@ -1,0 +1,88 @@
+/*body,
+html {
+  height: 100%;
+}*/
+
+$drawer-width: 300px;
+$drawer-speed: .2s;
+$drawer-background: #eee;
+
+[data-drawer-menu] {
+  position: fixed;
+  z-index: 1;
+
+  [data-drawer-contents] {
+    width: $drawer-width;
+    height: 100%;
+    position: fixed;
+    margin-left: -$drawer-width;
+    transition: margin-left $drawer-speed;
+    background: $drawer-background;
+    display: block;
+  }
+
+  [data-drawer-backdrop] {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: rgba(0,0,0,.5);
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: fixed;
+
+    transition-property: opacity, visibility;
+    transition-duration: $drawer-speed, 0s;
+    transition-delay: 0s, $drawer-speed;
+
+      visibility: hidden;
+  }
+
+  &[data-drawer-active="true"] {
+    [data-drawer-backdrop] {
+      opacity: 1;
+      height: 100%;
+      visibility: visible;
+
+      transition-property: visibility, opacity;
+      transition-duration: 0s, $drawer-speed;
+      transition-delay: 0s, 0s;
+    }
+
+    [data-drawer-contents] {
+      transition: margin-left $drawer-speed;
+      margin-left: 0;
+    }
+  }
+}
+
+// CORE
+
+[data-tiny-drawer="true"] {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+// EXAMPLE
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.whitespace {
+  height: 3000px;
+  background-color: #eee;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.trigger {
+  font-family: arial;
+  padding: .5rem 2rem;
+  background: #eee;
+  display: inline-block;
+  margin: .5rem 0;
+  cursor: default;
+  user-select: none;
+}
