@@ -2,46 +2,82 @@ var TinyDrawerMenu = (function () {
   var fn = {};
 
   fn.init = function(options) {
-    console.log('test');
-    fn.options = options;
+    fn.options = options = Object.assign({}, fn.defaults(), options);
 
-    fn.setup();
+    document.addEventListener("DOMContentLoaded", function(event) {
+      fn.setup();
 
-    fn.triggerOpen();
-    fn.triggerClose();
+      fn.triggerOpen();
+      fn.triggerClose();
+    });
   };
 
+  // Defaults
+  fn.defaults = function() {
+    return {
+      replacement: 'tdm'
+    };
+  };
+
+  // Setup
   fn.setup = function() {
-    fn.elementDrawer = document.querySelector(fn.options.selectorDrawer);
-    fn.elementBackdrop = document.querySelector('[data-drawer-backdrop]');
+    fn.elementDrawer = document.querySelector(fn.options.replacement + '-component');
+    fn.elementOpen = document.querySelectorAll('[data-' + fn.options.replacement + '-open]');
+    fn.elementClose = document.querySelectorAll('[data-' + fn.options.replacement + '-backdrop], [data-' + fn.options.replacement + '-close]');
   };
 
+  // Trigger open
   fn.triggerOpen = function() {
-    var elements = document.querySelectorAll(fn.options.selectorTrigger);
-    for(i=0; i<elements.length; i++) {
-      var element = elements[i];
-      element.addEventListener('click', fn.open.bind(null), false);
+    for(i=0; i<fn.elementOpen.length; i++) {
+      fn.elementOpen[i].addEventListener('click', fn.open.bind(null, fn.elementOpen[i]), false);
     }
   };
 
+  // Trigger close
   fn.triggerClose = function() {
-    fn.elementBackdrop.addEventListener('click', fn.close.bind(null), false);
+    for(i=0; i<fn.elementClose.length; i++) {
+      fn.elementClose[i].addEventListener('click', fn.close.bind(null, fn.elementClose[i]), false);
+    }
   };
 
-  fn.close = function() {
-    delete fn.elementDrawer.dataset.drawerActive;
-    delete document.body.dataset.tinyDrawer;
-    window.scrollTo(0, fn.top);
+  // Active unset
+  fn.activeUnset = function() {
+    delete document.body.dataset[fn.options.replacement];
   };
 
-  fn.open = function() {
-    fn.elementDrawer.dataset.drawerActive = true;
-    document.body.dataset.tinyDrawer = true;
+  // Active set
+  fn.activeSet = function() {
+    document.body.dataset[fn.options.replacement] = true;
+  };
 
+  // Offset top to variable
+  fn.offsetTopToVariable = function() {
     var offsets = document.body.getBoundingClientRect();
-
     fn.top = -offsets.top;
-    console.log(fn.top);
+  };
+
+  // Open
+  fn.open = function(element = null) {
+    fn.activeSet();
+    fn.offsetTopToVariable();
+    fn.callback(element);
+  };
+
+  // Close
+  fn.close = function(element = null) {
+    fn.activeUnset();
+    window.scrollTo(0, fn.top);
+    fn.callback(element);
+  };
+
+  // Callback init
+  fn.callback = function(element) {
+    if(typeof fn.options.callback == 'undefined') return;
+    if(element === null) return;
+
+    var action = "tdmOpen" in element.dataset ? 'open' : 'close';
+
+    fn.options.callback(element, action);
   };
 
   return fn;

@@ -11,25 +11,28 @@
 </head>
 <body class="template-tag"><div class="top">
 
-<div data-drawer-menu>
-  <div data-drawer-backdrop></div>
-  <div data-drawer-contents></div>
-</div>
+<tdm-component>
+  Some menu contents - <div data-tdm-close>Close</div>
+</tdm-component>
 
-<div class="trigger">Menu</div>
+<div data-tdm-open>Menu</div>
 <div class="whitespace"></div>
-<div class="trigger">Menu</div>
+<div data-tdm-open>Menu</div>
 
 <script src="assets/js/script.js?time=<?= time(); ?>"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(event) {
   TinyDrawerMenu.init({
-    'selectorTrigger': '.trigger',
-    'selectorDrawer': '[data-drawer-menu]'
+    callback: function(element, action) {
+      console.log(element);
+      console.log(action);
+    }
   });
-});
+
+  TinyDrawerMenu.close();
 </script>
+
+<div data-tdm-backdrop></div>
 
 </body>
 </html>

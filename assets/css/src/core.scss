@@ -1,0 +1,81 @@
+// OPTIONS
+
+$drawer-width: 300px;
+$drawer-speed: .2s;
+$drawer-background: #eee;
+$backdrop-background: rgba(0,0,0,.5);
+$prefix: 'tdm';
+
+// CORE
+
+#{$prefix}-component {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  z-index: 99999;
+
+  margin-left: -$drawer-width;
+
+  width: $drawer-width;
+  height: 100%;
+
+  transition: margin-left $drawer-speed;
+
+  background: $drawer-background;
+}
+
+[data-#{$prefix}-backdrop] {
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  z-index: 99998;
+
+  height: 100%;
+  width: 100%;
+
+  visibility: hidden;
+  opacity: 0;
+
+  background: $backdrop-background;
+
+  transition-property: opacity, visibility;
+  transition-duration: $drawer-speed, 0s;
+  transition-delay: 0s, $drawer-speed;
+}
+
+[data-#{$prefix}="true"] {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  [data-#{$prefix}-backdrop] {
+    visibility: visible;
+    opacity: 1;
+
+    transition-property: visibility, opacity;
+    transition-duration: 0s, $drawer-speed;
+    transition-delay: 0s, 0s;
+  }
+
+  #{$prefix}-component {
+    margin-left: 0;
+
+    transition: margin-left $drawer-speed;
+  }
+}
+
+// CLOSE ICON (optional)
+
+[data-#{$prefix}-backdrop]:before {
+  content: '';
+  height: 2rem;
+  width: 2rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-x'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+  background-size: 2rem;
+  display: block;
+  margin-top: 1rem;
+  margin-left: calc(#{$drawer-width} + 1rem);
+  opacity: .5;
+}
