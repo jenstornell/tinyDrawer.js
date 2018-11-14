@@ -13,16 +13,28 @@
 
 *The real thing is much smoother than this animated gif*
 
-## Basic example
+## Usage
 
 It just can't get any simpler than this.
+
+### CSS
+
+```html
+<link rel="stylesheet" href="assets/css/dist/core.min.css">
+```
+
+### HTML
 
 ```html
 <tdm-component>Put your menu here</tdm-component>
 <div data-tdm-open>Trigger to open menu</div>
+```
 
+### JS
+
+```html
 <script>
-  TinyDrawerMenu.init();
+TinyDrawerMenu.init();
 </script>
 ```
 

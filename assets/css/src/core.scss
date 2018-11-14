@@ -4,35 +4,31 @@ $drawer-width: 300px;
 $drawer-speed: .2s;
 $drawer-background: #eee;
 $backdrop-background: rgba(0,0,0,.5);
-$prefix: 'tdm';
+$replacement: 'tdm';
 
 // CORE
 
-#{$prefix}-component {
+#{$replacement}-component,
+[data-#{$replacement}-backdrop] {
   top: 0;
   left: 0;
   position: fixed;
   display: block;
+
+  height: 100%;
+}
+
+#{$replacement}-component {
   z-index: 99999;
 
   margin-left: -$drawer-width;
-
   width: $drawer-width;
-  height: 100%;
-
   transition: margin-left $drawer-speed;
-
   background: $drawer-background;
 }
 
-[data-#{$prefix}-backdrop] {
-  top: 0;
-  left: 0;
-  position: fixed;
-  display: block;
+[data-#{$replacement}-backdrop] {
   z-index: 99998;
-
-  height: 100%;
   width: 100%;
 
   visibility: hidden;
@@ -45,12 +41,12 @@ $prefix: 'tdm';
   transition-delay: 0s, $drawer-speed;
 }
 
-[data-#{$prefix}="true"] {
+[data-#{$replacement}="true"] {
   height: 100%;
   width: 100%;
   overflow: hidden;
 
-  [data-#{$prefix}-backdrop] {
+  [data-#{$replacement}-backdrop] {
     visibility: visible;
     opacity: 1;
 
@@ -59,7 +55,7 @@ $prefix: 'tdm';
     transition-delay: 0s, 0s;
   }
 
-  #{$prefix}-component {
+  #{$replacement}-component {
     margin-left: 0;
 
     transition: margin-left $drawer-speed;
@@ -68,7 +64,7 @@ $prefix: 'tdm';
 
 // CLOSE ICON (optional)
 
-[data-#{$prefix}-backdrop]:before {
+[data-#{$replacement}-backdrop]:before {
   content: '';
   height: 2rem;
   width: 2rem;

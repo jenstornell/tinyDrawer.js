@@ -1,6 +1,6 @@
 // EXAMPLE
 
-$prefix: 'tdm';
+$replacement: 'tdm';
 
 body {
   padding: 0;
@@ -13,7 +13,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-[data-#{$prefix}-open] {
+[data-#{$replacement}-open] {
   font-family: arial;
   padding: .5rem 2rem;
   background: #eee;
@@ -23,7 +23,7 @@ body {
   user-select: none;
 }
 
-[data-#{$prefix}-close] {
+[data-#{$replacement}-close] {
   font-family: arial;
   padding: .5rem 2rem;
   background: #ddd;
@@ -33,7 +33,7 @@ body {
   user-select: none;
 }
 
-#{$prefix}-component {
+#{$replacement}-component {
   font-family: Arial, Helvetica, sans-serif;
   color: #222;
   padding: 1rem;

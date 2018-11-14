@@ -7,19 +7,20 @@
 
   <title>Tiny Drawer Menu</title>
   
-  <link rel="stylesheet" href="assets/css/dist/style.css?time=<?= time(); ?>">
+  <link rel="stylesheet" href="assets/css/dist/core.min.css">
+  <link rel="stylesheet" href="assets/css/dist/example.min.css">
 </head>
 <body class="template-tag"><div class="top">
 
 <tdm-component>
-  Some menu contents - <div data-tdm-close>Close</div>
+  Some menu contents<div data-tdm-close>Close</div>
 </tdm-component>
 
 <div data-tdm-open>Menu</div>
 <div class="whitespace"></div>
 <div data-tdm-open>Menu</div>
 
-<script src="assets/js/script.js?time=<?= time(); ?>"></script>
+<script src="assets/js/script.js"></script>
 
 <script>
   TinyDrawerMenu.init({
