@@ -3,8 +3,10 @@
 ## In short
 
 - Bloat free.
-- Vanilla js with no dependencies.
-- JS and CSS files are minified and has a very small filesize.
+- 1kb in filesize.
+- Vanilla js, with no dependencies.
+- Dead simple setup.
+- It will remember your scroll position when closing the menu.
 - Callback support.
 
 ![Screenshot](screenshot.gif)
