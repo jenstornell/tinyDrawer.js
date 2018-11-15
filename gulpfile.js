@@ -23,7 +23,7 @@ function css(name) {
 // JS
 gulp.task('js', function() {
   gulp.src([
-    'assets/js/script.js'
+    'assets/js/tinyDrawer.js'
     ])
     .pipe(minifyJS({
       ext:{
@@ -38,5 +38,5 @@ gulp.task('js', function() {
 gulp.task('default', function() {
     css('core');
     css('example');
-    gulp.watch('assets/js/script.js',   ['js' ]);
+    gulp.watch('assets/js/tinyDrawer.js',   ['js' ]);
 });
