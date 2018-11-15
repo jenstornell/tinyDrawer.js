@@ -119,15 +119,17 @@ TinyDrawer.close();
 
 ### How to style it
 
-The important CSS that is needed for the component to work is put directly on the data attributes and the custom elements. However, if you want to add additional CSS to it, it's highly recommended to add a class to that element to separate the core CSS from the custom CSS.
+Use classes instead of styling the element or attributes directly. That way you will separate your style from the core style.
 
-### Why the use of data attributes
+### The reason for data attributes
 
-While classes or ids could be used for actions, I use data attributes instead. That way you can add your own classes that you can style separated from the logic.
+For `open` and `close` triggers, data attributes are used. That way logic is not mixed with your styling (which should be put into classes).
 
-### Why the use of custom elements
+### The reason for custom elements
 
-I could use a div with an id but all major browsers now supports custom elements. To make it really visible that it is a component, it's a custom element and not just a div.
+The `drawer-menu` is used like a component. To make it stand out from all the other elements, it's using a custom element.
+
+All major browsers has support for custom elements.
 
 ## Donate
 
