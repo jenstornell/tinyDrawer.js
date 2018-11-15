@@ -1,39 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-  <title>Tiny Drawer Menu</title>
+  <title>Tiny Drawer</title>
   
   <link rel="stylesheet" href="assets/css/dist/core.min.css">
   <link rel="stylesheet" href="assets/css/dist/example.min.css">
 </head>
-<body class="template-tag"><div class="top">
+<body>
 
-<nav-tdm class="menu">
-  Some menu contents<div data-tdm-close class="btn-close">Close</div>
-</nav-tdm>
+<drawer-menu class="menu">
+  Some menu contents<div data-drawer-close class="btn-close">Close</div>
+</drawer-menu>
 
-<div data-tdm-open class="btn-open">Menu</div>
+<div data-drawer-open class="btn-open">Menu</div>
 <div class="whitespace"></div>
-<div data-tdm-open class="btn-open">Menu</div>
+<div data-drawer-open class="btn-open">Menu</div>
 
 <script src="assets/js/script.js"></script>
 
 <script>
-  TinyDrawerMenu.init({
+  TinyDrawer.init({
     callback: function(element, action) {
       console.log(element);
       console.log(action);
     }
   });
-
-  TinyDrawerMenu.close();
 </script>
-
-<div data-tdm-backdrop></div>
 
 </body>
 </html>

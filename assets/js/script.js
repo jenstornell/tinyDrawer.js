@@ -1,10 +1,14 @@
-var TinyDrawerMenu = (function () {
+var TinyDrawer = (function () {
   var fn = {};
+  var o = {};
 
   fn.init = function(options) {
-    fn.options = options = Object.assign({}, fn.defaults(), options);
+    o = Object.assign({}, fn.defaults(), options);
+
+    console.log(o);
 
     document.addEventListener("DOMContentLoaded", function(event) {
+      fn.backdropAdd();
       fn.setup();
 
       fn.triggerOpen();
@@ -15,15 +19,16 @@ var TinyDrawerMenu = (function () {
   // Defaults
   fn.defaults = function() {
     return {
-      replacement: 'tdm'
+      replacement: 'drawer',
+      drawerSelector: 'drawer-menu'
     };
   };
 
   // Setup
   fn.setup = function() {
-    fn.elementDrawer = document.querySelector('nav-' + fn.options.replacement);
-    fn.elementOpen = document.querySelectorAll('[data-' + fn.options.replacement + '-open]');
-    fn.elementClose = document.querySelectorAll('[data-' + fn.options.replacement + '-backdrop], [data-' + fn.options.replacement + '-close]');
+    fn.elementDrawer = document.querySelector(o.drawerSelector);
+    fn.elementOpen = document.querySelectorAll('[data-' + o.replacement + '-open]');
+    fn.elementClose = document.querySelectorAll('[data-' + o.replacement + '-backdrop], [data-' + o.replacement + '-close]');
   };
 
   // Trigger open
@@ -42,12 +47,12 @@ var TinyDrawerMenu = (function () {
 
   // Active unset
   fn.activeUnset = function() {
-    delete document.body.dataset[fn.options.replacement];
+    delete document.body.dataset[o.replacement];
   };
 
   // Active set
   fn.activeSet = function() {
-    document.body.dataset[fn.options.replacement] = true;
+    document.body.dataset[o.replacement] = true;
   };
 
   // Offset top to variable
@@ -70,14 +75,22 @@ var TinyDrawerMenu = (function () {
     fn.callback(element);
   };
 
+  // Backdrop add
+  fn.backdropAdd = function() {
+    let backdrop = document.createElement('div');
+    backdrop.dataset[o.replacement + 'Backdrop'] = '';
+
+    document.body.appendChild(backdrop);
+  };
+
   // Callback init
   fn.callback = function(element) {
-    if(typeof fn.options.callback == 'undefined') return;
+    if(typeof o.callback == 'undefined') return;
     if(element === null) return;
 
-    var action = "tdmOpen" in element.dataset ? 'open' : 'close';
+    var action = "drawerOpen" in element.dataset ? 'open' : 'close';
 
-    fn.options.callback(element, action);
+    o.callback(element, action);
   };
 
   return fn;

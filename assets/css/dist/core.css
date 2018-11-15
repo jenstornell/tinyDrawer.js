@@ -4,22 +4,22 @@
   --tdm-drawer-background: #eee;
   --tdm-backdrop-background: rgba(0,0,0,.5); }
 
-nav-tdm,
-[data-tdm-backdrop] {
+drawer-menu,
+[data-drawer-backdrop] {
   top: 0;
   left: 0;
   position: fixed;
   display: block;
   height: 100%; }
 
-nav-tdm {
+drawer-menu {
   z-index: 99999;
   margin-left: calc(var(--tdm-drawer-width) * -1);
   width: var(--tdm-drawer-width);
   transition: margin-left var(--tdm-drawer-speed);
   background: var(--tdm-drawer-background); }
 
-[data-tdm-backdrop] {
+[data-drawer-backdrop] {
   z-index: 99998;
   width: 100%;
   visibility: hidden;
@@ -29,21 +29,21 @@ nav-tdm {
   transition-duration: var(--tdm-drawer-speed), 0s;
   transition-delay: 0s, var(--tdm-drawer-speed); }
 
-[data-tdm="true"] {
+[data-drawer="true"] {
   height: 100%;
   width: 100%;
   overflow: hidden; }
-  [data-tdm="true"] [data-tdm-backdrop] {
+  [data-drawer="true"] [data-drawer-backdrop] {
     visibility: visible;
     opacity: 1;
     transition-property: visibility, opacity;
     transition-duration: 0s, var(--tdm-drawer-speed);
     transition-delay: 0s, 0s; }
-  [data-tdm="true"] nav-tdm {
+  [data-drawer="true"] drawer-menu {
     margin-left: 0;
     transition: margin-left var(--tdm-drawer-speed); }
 
-[data-tdm-backdrop]:before {
+[data-drawer-backdrop]:before {
   content: '';
   height: 2rem;
   width: 2rem;

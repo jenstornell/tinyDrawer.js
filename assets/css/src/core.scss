@@ -1,6 +1,7 @@
 // OPTIONS
 
-$replacement: 'tdm';
+$replacement: 'drawer';
+$drawer-selector: 'drawer-menu';
 
 :root {
   --tdm-drawer-width: 300px;
@@ -11,7 +12,7 @@ $replacement: 'tdm';
 
 // CORE
 
-nav-#{$replacement},
+#{$drawer-selector},
 [data-#{$replacement}-backdrop] {
   top: 0;
   left: 0;
@@ -21,7 +22,7 @@ nav-#{$replacement},
   height: 100%;
 }
 
-nav-#{$replacement} {
+#{$drawer-selector} {
   z-index: 99999;
 
   margin-left: calc(var(--tdm-drawer-width) * -1);
@@ -58,7 +59,7 @@ nav-#{$replacement} {
     transition-delay: 0s, 0s;
   }
 
-  nav-#{$replacement} {
+  #{$drawer-selector} {
     margin-left: 0;
 
     transition: margin-left var(--tdm-drawer-speed);

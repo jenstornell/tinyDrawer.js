@@ -1,15 +1,18 @@
-# Tiny Drawer Menu
+# Tiny Drawer
 
-*Version 1.1*
+*Version 1.2*
+
+Really small mobile menu navigation sliding in from the left.
 
 ## In short
 
-- Bloat free.
-- 1kb in filesize.
-- Vanilla js, with no dependencies.
-- Dead simple setup.
-- It will remember your scroll position when closing the menu.
-- Callback support.
+- Only 1kb
+- Vanilla JS
+- Zero dependencies
+- Super simple setup
+- Callback support
+- No content wrapper needed
+- Remember scroll position on close
 
 ![Screenshot](screenshot.gif)
 
@@ -17,7 +20,7 @@
 
 ## Usage
 
-It just can't get any simpler than this.
+It just can't get any simpler than this. There is also an example in `index.php`.
 
 ### CSS
 
@@ -28,15 +31,15 @@ It just can't get any simpler than this.
 ### HTML
 
 ```html
-<nav-tdm>Put your menu here</nav-tdm>
-<div data-tdm-open>Trigger to open menu</div>
+<drawer-menu>Put your menu here</drawer-menu>
+<div data-drawer-open>Trigger to open menu</div>
 ```
 
 ### JS
 
 ```html
 <script>
-TinyDrawerMenu.init();
+TinyDrawer.init();
 </script>
 ```
 
@@ -44,15 +47,25 @@ TinyDrawerMenu.init();
 
 ### replacement
 
-To prevent possible collision with other scrips you can set your own replacement part. By default it's set to `tdm` (as in Tiny Drawer Menu).
+To prevent possible collision with other scrips you change `drawer` in data attributes to something else.
 
 ```js
-TinyDrawerMenu.init({
-  'replacement': 'tdm'
+TinyDrawer.init({
+  replacement: 'drawer'
 });
 ```
 
-*Be aware! If you change the replacement, you also need to match it in the css file.*
+*Be aware! If you change this option, you also need to match it in the css file.*
+
+### drawer-selector
+
+```js
+TinyDrawer.init({
+  drawerSelector: 'drawer-menu'
+});
+```
+
+*Be aware! If you change this option, you also need to match it in the css file.*
 
 ### callback
 
@@ -62,7 +75,7 @@ If you need to trigger other actions when the menu state changes, you can use a 
 - `action` is `open` or `close` depending on what happends.
 
 ```js
-TinyDrawerMenu.init({
+TinyDrawer.init({
   callback: function(element, action) {
     console.log(element);
     console.log(action);
@@ -70,14 +83,28 @@ TinyDrawerMenu.init({
 });
 ```
 
-## Methods
+## HTML methods
+
+## Open
+
+```html
+<div data-drawer-open>Trigger to open menu</div>
+```
+
+## Close
+
+```html
+<div data-drawer-close>Trigger to open menu</div>
+```
+
+## JS methods
 
 ### open
 
 If you need to programmically trigger the menu to open you can use this method.
 
 ```js
-TinyDrawerMenu.open();
+TinyDrawer.open();
 ```
 
 ### close
@@ -85,7 +112,7 @@ TinyDrawerMenu.open();
 If you need to programmically trigger the menu to close you can use this method.
 
 ```js
-TinyDrawerMenu.close();
+TinyDrawer.close();
 ```
 
 ## Other information
