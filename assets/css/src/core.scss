@@ -1,14 +1,17 @@
 // OPTIONS
 
-$drawer-width: 300px;
-$drawer-speed: .2s;
-$drawer-background: #eee;
-$backdrop-background: rgba(0,0,0,.5);
 $replacement: 'tdm';
+
+:root {
+  --tdm-drawer-width: 300px;
+  --tdm-drawer-speed: .2s;
+  --tdm-drawer-background: #eee;
+  --tdm-backdrop-background: rgba(0,0,0,.5);
+}
 
 // CORE
 
-#{$replacement}-component,
+nav-#{$replacement},
 [data-#{$replacement}-backdrop] {
   top: 0;
   left: 0;
@@ -18,13 +21,13 @@ $replacement: 'tdm';
   height: 100%;
 }
 
-#{$replacement}-component {
+nav-#{$replacement} {
   z-index: 99999;
 
-  margin-left: -$drawer-width;
-  width: $drawer-width;
-  transition: margin-left $drawer-speed;
-  background: $drawer-background;
+  margin-left: calc(var(--tdm-drawer-width) * -1);
+  width: var(--tdm-drawer-width);
+  transition: margin-left var(--tdm-drawer-speed);
+  background: var(--tdm-drawer-background);
 }
 
 [data-#{$replacement}-backdrop] {
@@ -34,11 +37,11 @@ $replacement: 'tdm';
   visibility: hidden;
   opacity: 0;
 
-  background: $backdrop-background;
+  background: var(--tdm-backdrop-background);
 
   transition-property: opacity, visibility;
-  transition-duration: $drawer-speed, 0s;
-  transition-delay: 0s, $drawer-speed;
+  transition-duration: var(--tdm-drawer-speed), 0s;
+  transition-delay: 0s, var(--tdm-drawer-speed);
 }
 
 [data-#{$replacement}="true"] {
@@ -51,14 +54,14 @@ $replacement: 'tdm';
     opacity: 1;
 
     transition-property: visibility, opacity;
-    transition-duration: 0s, $drawer-speed;
+    transition-duration: 0s, var(--tdm-drawer-speed);
     transition-delay: 0s, 0s;
   }
 
-  #{$replacement}-component {
+  nav-#{$replacement} {
     margin-left: 0;
 
-    transition: margin-left $drawer-speed;
+    transition: margin-left var(--tdm-drawer-speed);
   }
 }
 
@@ -72,6 +75,6 @@ $replacement: 'tdm';
   background-size: 2rem;
   display: block;
   margin-top: 1rem;
-  margin-left: calc(#{$drawer-width} + 1rem);
+  margin-left: calc(var(--tdm-drawer-width) + 1rem);
   opacity: .5;
 }

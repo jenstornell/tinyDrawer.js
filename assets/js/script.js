@@ -21,7 +21,7 @@ var TinyDrawerMenu = (function () {
 
   // Setup
   fn.setup = function() {
-    fn.elementDrawer = document.querySelector(fn.options.replacement + '-component');
+    fn.elementDrawer = document.querySelector('nav-' + fn.options.replacement);
     fn.elementOpen = document.querySelectorAll('[data-' + fn.options.replacement + '-open]');
     fn.elementClose = document.querySelectorAll('[data-' + fn.options.replacement + '-backdrop], [data-' + fn.options.replacement + '-close]');
   };
