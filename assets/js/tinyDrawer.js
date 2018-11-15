@@ -5,8 +5,6 @@ var TinyDrawer = (function () {
   fn.init = function(options) {
     o = Object.assign({}, fn.defaults(), options);
 
-    console.log(o);
-
     document.addEventListener("DOMContentLoaded", function(event) {
       fn.backdropAdd();
       fn.setup();
