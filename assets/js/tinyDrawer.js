@@ -11,6 +11,8 @@ var TinyDrawer = (function () {
 
       fn.triggerOpen();
       fn.triggerClose();
+
+      fn.activeUnset();
     });
   };
 
@@ -45,7 +47,7 @@ var TinyDrawer = (function () {
 
   // Active unset
   fn.activeUnset = function() {
-    delete document.body.dataset[o.replacement];
+    document.body.dataset[o.replacement] = '';
   };
 
   // Active set

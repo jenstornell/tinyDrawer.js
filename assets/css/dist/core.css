@@ -10,7 +10,12 @@ drawer-menu,
   left: 0;
   position: fixed;
   display: block;
+  display: none;
   height: 100%; }
+
+[data-drawer] drawer-menu,
+[data-drawer] [data-drawer-backdrop] {
+  display: block; }
 
 drawer-menu {
   z-index: 99999;

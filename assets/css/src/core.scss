@@ -18,8 +18,16 @@ $drawer-selector: 'drawer-menu';
   left: 0;
   position: fixed;
   display: block;
+  display: none;
 
   height: 100%;
+}
+
+[data-#{$replacement}] {
+  #{$drawer-selector},
+  [data-#{$replacement}-backdrop] {
+    display: block;
+  }
 }
 
 #{$drawer-selector} {
