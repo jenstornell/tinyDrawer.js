@@ -1,42 +1,54 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var gutil = require('gulp-util');
-var minifyJS = require('gulp-minify');
+let gulp = require("gulp");
+let sass = require("gulp-sass");
+let autoprefixer = require("gulp-autoprefixer");
+let concat = require("gulp-concat");
+let uglify = require('gulp-uglify-es').default;
+let csso = require('gulp-csso');
+let rename = require('gulp-rename');
 
-function css(name) {
-  gulp.watch('assets/css/src/' + name + '.scss', [name + '_css']);
-  gulp.task(name + '_css', function() {
-    return gulp.src([
-      'assets/css/src/' + name + '.scss'
-      ])
-      .pipe(concat(name))
-      .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest('assets/css/dist'))
-      .pipe(rename(name + '.min.scss'))
-      .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-      .pipe(gulp.dest('assets/css/dist'))
-  });
+var paths = {
+    styles: {
+        src: "assets/css/src/**/*.scss",
+        dest: "assets/css/dist"
+},
+    scripts: {
+        src: "assets/js/src/**/*.js",
+        dest: "assets/js/dist"
+    }
+};
+
+function style() {
+    return (
+        gulp
+            .src(paths.styles.src)
+            .pipe(concat('tinyDrawer.scss'))
+            .pipe(sass())
+            .on("error", sass.logError)
+            .pipe(autoprefixer())
+            .pipe(gulp.dest(paths.styles.dest))
+            .pipe(csso())
+            .pipe(rename({extname: '.min.css'}))
+            .pipe(gulp.dest(paths.styles.dest))
+    );
 }
 
-// JS
-gulp.task('js', function() {
-  gulp.src([
-    'assets/js/tinyDrawer.js'
-    ])
-    .pipe(minifyJS({
-      ext:{
-        min:'.min.js'
-      },
-    }))
-    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
-    .pipe(gulp.dest('assets/js'))
-});
+function script() {
+    return (
+        gulp
+            .src(paths.scripts.src)
+            .pipe(concat('tinyDrawer.js'))
+            .pipe(gulp.dest(paths.scripts.dest))
+            .pipe(uglify())
+            .pipe(rename({extname: '.min.js'}))
+            .pipe(gulp.dest(paths.scripts.dest))
+    );
+}
 
-// Default
-gulp.task('default', function() {
-    css('core');
-    css('example');
-    gulp.watch('assets/js/tinyDrawer.js',   ['js' ]);
-});
+function watch(){
+    gulp.watch(paths.styles.src, style);
+    gulp.watch(paths.scripts.src, script);
+}
+
+exports.style = style;
+exports.script = script;
+exports.watch = watch;

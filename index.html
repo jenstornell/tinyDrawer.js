@@ -6,8 +6,45 @@
 
   <title>Tiny Drawer</title>
   
-  <link rel="stylesheet" href="assets/css/dist/core.min.css">
-  <link rel="stylesheet" href="assets/css/dist/example.min.css">
+  <link rel="stylesheet" href="assets/css/dist/tinyDrawer.min.css">
+  
+  <style>
+    body {
+  padding: 0;
+  margin: 0;
+}
+
+.whitespace {
+  height: 3000px;
+  background: #eee;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.btn-open,
+.btn-close {
+  font-family: arial;
+  padding: .5rem 2rem;
+  display: inline-block;
+  margin: 1rem;
+  cursor: default;
+  user-select: none;
+}
+
+.btn-open {
+  background: #eee;
+}
+
+.btn-close {
+  background: #ddd;
+}
+
+.menu {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+  </style>
 </head>
 <body>
 
@@ -19,10 +56,10 @@
 <div class="whitespace"></div>
 <div data-drawer-open class="btn-open">Menu</div>
 
-<script src="assets/js/tinyDrawer.min.js"></script>
+<script src="assets/js/dist/tinyDrawer.min.js"></script>
 
 <script>
-  TinyDrawer.init({
+  tinyDrawer({
     callback: function(element, action) {
       console.log(element);
       console.log(action);

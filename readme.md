@@ -1,6 +1,6 @@
 # Tiny Drawer
 
-*Version 1.3*
+*Version 2.0*
 
 Really small mobile menu navigation sliding in from the left.
 
@@ -20,12 +20,12 @@ Really small mobile menu navigation sliding in from the left.
 
 ## Usage
 
-It just can't get any simpler than this. There is also an example in `index.php`.
+It just can't get any simpler than this. There is also an example in `index.html`.
 
 ### CSS
 
 ```html
-<link rel="stylesheet" href="assets/css/dist/core.min.css">
+<link rel="stylesheet" href="assets/css/dist/tinyDrawer.min.css">
 ```
 
 ### HTML
@@ -38,8 +38,9 @@ It just can't get any simpler than this. There is also an example in `index.php`
 ### JS
 
 ```html
+<script src="assets/js/dist/tinyDrawer.min.js"></script>
 <script>
-TinyDrawer.init();
+tinyDrawer();
 </script>
 ```
 
@@ -50,7 +51,7 @@ TinyDrawer.init();
 To prevent possible collision with other scrips you change `drawer` in data attributes to something else.
 
 ```js
-TinyDrawer.init({
+tinyDrawer({
   replacement: 'drawer'
 });
 ```
@@ -60,7 +61,7 @@ TinyDrawer.init({
 ### drawer-selector
 
 ```js
-TinyDrawer.init({
+tinyDrawer({
   drawerSelector: 'drawer-menu'
 });
 ```
@@ -75,7 +76,7 @@ If you need to trigger other actions when the menu state changes, you can use a 
 - `action` is `open` or `close` depending on what happends.
 
 ```js
-TinyDrawer.init({
+tinyDrawer({
   callback: function(element, action) {
     console.log(element);
     console.log(action);
@@ -97,6 +98,7 @@ TinyDrawer.init({
 <div data-drawer-close>Trigger to open menu</div>
 ```
 
+<!--
 ## JS methods
 
 ### open
@@ -114,6 +116,7 @@ If you need to programmically trigger the menu to close you can use this method.
 ```js
 TinyDrawer.close();
 ```
+-->
 
 ## Other information
 
