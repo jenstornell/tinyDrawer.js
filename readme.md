@@ -98,7 +98,6 @@ tinyDrawer({
 <div data-drawer-close>Trigger to open menu</div>
 ```
 
-<!--
 ## JS methods
 
 ### open
@@ -106,7 +105,7 @@ tinyDrawer({
 If you need to programmically trigger the menu to open you can use this method.
 
 ```js
-TinyDrawer.open();
+tinyDrawerOpen();
 ```
 
 ### close
@@ -114,9 +113,8 @@ TinyDrawer.open();
 If you need to programmically trigger the menu to close you can use this method.
 
 ```js
-TinyDrawer.close();
+tinyDrawerClose();
 ```
--->
 
 ## Other information
 

@@ -1,7 +1,8 @@
 class TinyDrawer {
   constructor(options) {
     this.o = Object.assign({}, this.defaults(), options);
-
+  }
+  load(options) {
     document.addEventListener("DOMContentLoaded", () => {
       this.backdropAdd();
 
@@ -97,5 +98,16 @@ class TinyDrawer {
 }
 
 function tinyDrawer(args) {
-  new TinyDrawer(args);
+  let Instance = new TinyDrawer(args);
+  Instance.load();
+}
+
+function tinyDrawerOpen(args) {
+  let Instance = new TinyDrawer(args);
+  Instance.open();
+}
+
+function tinyDrawerClose(args) {
+  let Instance = new TinyDrawer(args);
+  Instance.close();
 }
