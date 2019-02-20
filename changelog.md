@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1
+
+- Fixed bug with close callback not triggered. Thanks @CramericaIndustries!
+
 ## 2.0
 
 - Rewritten as ES6 version of javascript

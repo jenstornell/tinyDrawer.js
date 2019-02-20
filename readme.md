@@ -1,6 +1,6 @@
 # Tiny Drawer
 
-*Version 2.0*
+*Version 2.1*
 
 Really small mobile menu navigation sliding in from the left.
 

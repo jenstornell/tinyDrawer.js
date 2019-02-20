@@ -43,7 +43,7 @@ class TinyDrawer {
   triggerClose() {
     this.elementClose.forEach((element) => {
       element.addEventListener('click', (e) => {
-        this.close();
+        this.close(e.target);
       });
     });
   };

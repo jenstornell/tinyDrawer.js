@@ -7,29 +7,29 @@ let csso = require('gulp-csso');
 let rename = require('gulp-rename');
 
 var paths = {
-    styles: {
-        src: "assets/css/src/**/*.scss",
-        dest: "assets/css/dist"
+  styles: {
+    src: "assets/css/src/**/*.scss",
+    dest: "assets/css/dist"
 },
-    scripts: {
-        src: "assets/js/src/**/*.js",
-        dest: "assets/js/dist"
-    }
+  scripts: {
+    src: "assets/js/src/**/*.js",
+    dest: "assets/js/dist"
+  }
 };
 
 function style() {
-    return (
-        gulp
-            .src(paths.styles.src)
-            .pipe(concat('tinyDrawer.scss'))
-            .pipe(sass())
-            .on("error", sass.logError)
-            .pipe(autoprefixer())
-            .pipe(gulp.dest(paths.styles.dest))
-            .pipe(csso())
-            .pipe(rename({extname: '.min.css'}))
-            .pipe(gulp.dest(paths.styles.dest))
-    );
+  return (
+    gulp
+      .src(paths.styles.src)
+      .pipe(concat('tinyDrawer.scss'))
+      .pipe(sass())
+      .on("error", sass.logError)
+      .pipe(autoprefixer())
+      .pipe(gulp.dest(paths.styles.dest))
+      .pipe(csso())
+      .pipe(rename({extname: '.min.css'}))
+      .pipe(gulp.dest(paths.styles.dest))
+  );
 }
 
 function script() {
