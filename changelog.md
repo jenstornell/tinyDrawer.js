@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2
+
+- Fixed bug with open callback triggered by method. Thanks @CramericaIndustries!
+- Added some ugly but useful tests in the html.
+
 ## 2.1
 
 - Fixed bug with close callback not triggered. Thanks @CramericaIndustries!

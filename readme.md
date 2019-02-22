@@ -1,6 +1,6 @@
 # Tiny Drawer
 
-*Version 2.1*
+*Version 2.2* - [Changelog](changelog.md)
 
 Really small mobile menu navigation sliding in from the left.
 

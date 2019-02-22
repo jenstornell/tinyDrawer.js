@@ -2,7 +2,7 @@ class TinyDrawer {
   constructor(options) {
     this.o = Object.assign({}, this.defaults(), options);
   }
-  load(options) {
+  load() {
     document.addEventListener("DOMContentLoaded", () => {
       this.backdropAdd();
 
@@ -68,14 +68,14 @@ class TinyDrawer {
   open(element = null) {
     this.activeSet();
     this.offsetTopToVariable();
-    this.callback(element);
+    this.callback(element, 'open');
   };
 
   // Close
   close(element = null) {
     this.activeUnset();
     window.scrollTo(0, this.top);
-    this.callback(element);
+    this.callback(element, 'close');
   };
 
   // Backdrop add
@@ -87,27 +87,26 @@ class TinyDrawer {
   };
 
   // Callback init
-  callback(element) {
+  callback(element, action) {
     if(typeof this.o.callback == 'undefined') return;
-    if(element === null) return;
-
-    var action = "drawerOpen" in element.dataset ? 'open' : 'close';
-
     this.o.callback(element, action);
   };
 }
 
+var tinyDrawerObj;
+
 function tinyDrawer(args) {
-  let Instance = new TinyDrawer(args);
-  Instance.load();
+  tinyDrawerObj = new TinyDrawer(args);
+  tinyDrawerObj.load();
+  return tinyDrawerObj;
 }
 
-function tinyDrawerOpen(args) {
-  let Instance = new TinyDrawer(args);
-  Instance.open();
+function tinyDrawerOpen(e = null) {
+  let target = e ? e.target : null;
+  tinyDrawerObj.open(target);
 }
 
-function tinyDrawerClose(args) {
-  let Instance = new TinyDrawer(args);
-  Instance.close();
+function tinyDrawerClose(e = null) {
+  let target = e ? e.target : null;
+  tinyDrawerObj.close(target);
 }
